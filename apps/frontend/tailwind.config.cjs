@@ -5,6 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        smsak: {
+          primary: '#00318A',
+          'primary-light': '#1A4DB8',
+          'primary-dark': '#001F52',
+          accent: '#F5C000',
+          'accent-light': '#FFD700',
+          'accent-dark': '#D4A000',
+        },
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
         textColor: 'var(--new-btn-text)',

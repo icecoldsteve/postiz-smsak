@@ -1,3 +1,19 @@
+# SMSAK Social Scheduler
+
+🚀 **AI-powered social media scheduling for Belgian SMEs**
+
+Schedule, analyze, and automate posts across 28+ platforms (X, LinkedIn, Instagram, TikTok, Facebook, Discord, and more) with AI assistance.
+
+**Built on [Postiz](https://github.com/gitroomhq/postiz-app) | Branded for [SMSAK.be](https://www.smsak.be)**
+
+- 📧 Contact: steve@smsak.be
+- 🌐 Website: https://www.smsak.be
+- 📋 KBO: BE1035.506.672
+
+> Upstream sync: `git fetch upstream main && git merge upstream/main && git push origin main`
+
+---
+
 <p align="center">
   <a href="https://postiz.com/" target="_blank">
   <picture>

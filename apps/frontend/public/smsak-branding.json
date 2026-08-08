@@ -1,0 +1,18 @@
+{
+  "name": "SMSAK Social Scheduler",
+  "shortName": "SMSAK",
+  "brandColor": "#00318A",
+  "accentColor": "#F5C000",
+  "website": "https://www.smsak.be",
+  "email": "social@smsak.be",
+  "phone": "+32 467 01 04 68",
+  "address": "Bosheide 9, 8660 Adinkerke, Belgium",
+  "kbo": "BE1035.506.672",
+  "fonts": {
+    "display": "Bebas Neue",
+    "heading": "Oswald",
+    "body": "Barlow",
+    "ui": "Inter"
+  },
+  "footerCopyright": "© SMSAK | www.smsak.be | KBO BE1035.506.672"
+}
