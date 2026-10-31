@@ -2,11 +2,7 @@
 // Creates a Mollie payment and returns { checkoutUrl }.
 // Requires env var MOLLIE_API_KEY (test_... or live_...) in Vercel.
 
-const PLANS = {
-  starter: { amount: '99.00', description: 'SMSAK Social Scheduler — Starter (1 jaar)' },
-  professional: { amount: '299.00', description: 'SMSAK Social Scheduler — Professional (1 jaar)' },
-  enterprise: { amount: '999.00', description: 'SMSAK Social Scheduler — Enterprise (1 jaar)' },
-};
+const { PLANS, BASE_URL } = require('./_plans');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -30,8 +26,7 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'Ongeldig e-mailadres.' });
   }
 
-  const host = req.headers['x-forwarded-host'] || req.headers.host;
-  const base = `https://${host}`;
+  const base = BASE_URL;
 
   let mollieRes;
   try {
@@ -61,6 +56,11 @@ module.exports = async (req, res) => {
     return res.status(502).json({ error: 'Betaalprovider gaf een fout. Probeer opnieuw of mail social@smsak.be.' });
   }
 
-  const payment = await mollieRes.json();
-  return res.status(200).json({ checkoutUrl: payment._links.checkout.href, paymentId: payment.id });
+  const payment = await mollieRes.json().catch(() => null);
+  const checkoutUrl = payment && payment._links && payment._links.checkout && payment._links.checkout.href;
+  if (!checkoutUrl) {
+    console.error('Mollie response without checkout link', payment && payment.id);
+    return res.status(502).json({ error: 'Betaalprovider gaf een fout. Probeer opnieuw of mail social@smsak.be.' });
+  }
+  return res.status(200).json({ checkoutUrl, paymentId: payment.id });
 };
